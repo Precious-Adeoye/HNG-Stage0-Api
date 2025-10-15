@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNG-Stage0-Api", "HNG-Stage0-Api\HNG-Stage0-Api.csproj", "{A833D591-596E-496E-936D-51757C3E0B32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A833D591-596E-496E-936D-51757C3E0B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A833D591-596E-496E-936D-51757C3E0B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A833D591-596E-496E-936D-51757C3E0B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A833D591-596E-496E-936D-51757C3E0B32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E56F2DB8-9F59-42AA-98AC-62EA8D827376}
+	EndGlobalSection
+EndGlobal
