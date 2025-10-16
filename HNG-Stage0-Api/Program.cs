@@ -7,6 +7,11 @@ namespace HNG_Stage0_Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            builder.WebHost.UseUrls($"http://*:{port}");
+
+            builder.Services.AddHealthChecks();
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -15,10 +20,12 @@ namespace HNG_Stage0_Api
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient();
 
-            builder.WebHost.UseUrls("http://+:8080");
+          
 
 
             var app = builder.Build();
+
+            app.UseHealthChecks("/health");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

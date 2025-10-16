@@ -1,0 +1,8 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "./HNG-Stage0-Api/Dockerfile"
+
+[deploy]
+startCommand = "dotnet", "HNG-Stage0-Api.dll"
+restartPolicyType = "always"
+healthcheckPath = "/health"
