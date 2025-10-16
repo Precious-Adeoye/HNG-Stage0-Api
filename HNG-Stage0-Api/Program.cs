@@ -15,6 +15,9 @@ namespace HNG_Stage0_Api
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient();
 
+            builder.WebHost.UseUrls("http://+:8080");
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
