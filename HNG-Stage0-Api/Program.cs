@@ -41,12 +41,11 @@ namespace HNG_Stage0_Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-            
-           app.MapGet("/", () => "🚀 API is running on PXXL App successfully!");
  
 
             app.MapControllers();
+
+            app.MapGet("/", () => "🚀 API is running on PXXL App successfully!");
 
             app.Run();
         }
