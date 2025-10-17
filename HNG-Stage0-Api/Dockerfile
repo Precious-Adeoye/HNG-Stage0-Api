@@ -31,4 +31,5 @@ COPY --from=publish /app/publish .
 ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "HNG-Stage0-Api.dll"]
+ ENTRYPOINT ["dotnet", "out/HNG-Stage0-Api.dll"]
+
