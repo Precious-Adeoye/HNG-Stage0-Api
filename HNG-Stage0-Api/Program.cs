@@ -8,7 +8,11 @@ namespace HNG_Stage0_Api
             var builder = WebApplication.CreateBuilder(args);
 
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-            builder.WebHost.UseUrls($"http://*:{port}");
+            builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+            PXXL-assigned port (default: 3000)
+
+           
+           
 
             builder.Services.AddHealthChecks();
 
@@ -38,6 +42,9 @@ namespace HNG_Stage0_Api
 
             app.UseAuthorization();
 
+            
+           app.MapGet("/", () => "🚀 API is running on PXXL App successfully!");
+ 
 
             app.MapControllers();
 
