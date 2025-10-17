@@ -1,23 +1,34 @@
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 
-# This stage is used to build the service project
+# --- Build Stage ---
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# Copy the project file and restore dependencies
 COPY ["HNG-Stage0-Api/HNG-Stage0-Api.csproj", "HNG-Stage0-Api/"]
-RUN dotnet restore "./HNG-Stage0-Api/HNG-Stage0-Api.csproj"
+RUN dotnet restore "HNG-Stage0-Api/HNG-Stage0-Api.csproj"
+
+# Copy the entire source and build
 COPY . .
 WORKDIR "/src/HNG-Stage0-Api"
-RUN dotnet build "./HNG-Stage0-Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "HNG-Stage0-Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# This stage is used to publish the service project to be copied to the final stage
+# --- Publish Stage ---
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./HNG-Stage0-Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "HNG-Stage0-Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
-FROM base AS final
+# --- Runtime Stage ---
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
+
+# Copy the published output
 COPY --from=publish /app/publish .
+
+# Railway will provide the PORT environment variable
+ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "HNG-Stage0-Api.dll"]

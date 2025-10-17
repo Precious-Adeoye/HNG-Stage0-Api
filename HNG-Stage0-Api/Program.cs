@@ -9,9 +9,7 @@ namespace HNG_Stage0_Api
 
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
-            
-
-           
+             
            
 
             builder.Services.AddHealthChecks();
@@ -37,8 +35,6 @@ namespace HNG_Stage0_Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseAuthorization();
  
