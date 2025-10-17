@@ -4,3 +4,6 @@ How to Setup the environment
 # cd ProfileAPI
 # dotnet restore
 # dotnet run
+
+# link to final project
+https://hng-stage0-api.pxxl.click/api/me
