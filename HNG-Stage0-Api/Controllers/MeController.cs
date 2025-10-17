@@ -15,6 +15,7 @@ namespace HNG_Stage0_Api.Controllers
             _httpClient = httpClient;
         }
 
+        
         [HttpGet]
         public async Task<IActionResult> GetProfile()
         {

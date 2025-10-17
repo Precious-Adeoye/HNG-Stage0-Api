@@ -30,11 +30,11 @@ namespace HNG_Stage0_Api
             app.UseHealthChecks("/health");
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+           
+            
+            app.UseSwagger();
+            app.UseSwaggerUI();
+           
 
             app.UseAuthorization();
  
