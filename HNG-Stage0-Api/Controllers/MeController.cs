@@ -33,7 +33,7 @@ namespace HNG_Stage0_Api.Controllers
                     status = "success",
                     user = new
                     {
-                        email = "youremail@example.com",
+                        email = "contact.preciousadeoye@gmail.com",
                         name = "Precious Adeoye",
                         stack = "C#/.NET Core"
                     },
@@ -50,7 +50,7 @@ namespace HNG_Stage0_Api.Controllers
                     status = "success",
                     user = new
                     {
-                        email = "youremail@example.com",
+                        email = "contact.preciousadeoye@gmail.com",
                         name = "Precious Adeoye",
                         stack = "C#/.NET Core"
                     },
