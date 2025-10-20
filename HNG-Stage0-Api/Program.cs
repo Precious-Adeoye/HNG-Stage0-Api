@@ -11,10 +11,9 @@ namespace HNG_Stage0_Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Register SQLite DB
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(connectionString));
-
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+            );
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://0.0.0.0:{port}");     
 
