@@ -28,11 +28,12 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Environment variable for SQLite database path
-ENV ConnectionStrings__DefaultConnection="Data Source=/app/app.db"
+ENV ConnectionStrings__DefaultConnection="Data Source=stringanalyzer.db"
 
 # Railway will provide the PORT environment variable
 ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
 EXPOSE 8080
 
- ENTRYPOINT ["dotnet", "out/HNG-Stage0-Api.dll"]
+ ENTRYPOINT ["dotnet", "HNG-Stage0-Api.dll"]
+
 
