@@ -1,4 +1,7 @@
 
+using HNG_Stage0_Api.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace HNG_Stage0_Api
 {
     public class Program
@@ -7,6 +10,10 @@ namespace HNG_Stage0_Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Register SQLite DB
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+            );
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://0.0.0.0:{port}");     
 
@@ -23,7 +30,6 @@ namespace HNG_Stage0_Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient();
-
      
 
             var app = builder.Build();
