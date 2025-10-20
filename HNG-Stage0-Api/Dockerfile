@@ -27,6 +27,9 @@ WORKDIR /app
 # Copy the published output
 COPY --from=publish /app/publish .
 
+# Environment variable for SQLite database path
+ENV ConnectionStrings__DefaultConnection="Data Source=/app/app.db"
+
 # Railway will provide the PORT environment variable
 ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
 EXPOSE 8080
