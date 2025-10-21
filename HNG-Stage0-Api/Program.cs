@@ -1,4 +1,3 @@
-
 using HNG_Stage0_Api.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,7 +60,15 @@ namespace HNG_Stage0_Api
             Console.WriteLine($"✅ Server running on port {port} in {app.Environment.EnvironmentName} mode");
 
 
-            app.Run();
+            try
+            {
+                app.Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Application failed to start: " + ex);
+                throw;
+            }
         }
     }
 }
