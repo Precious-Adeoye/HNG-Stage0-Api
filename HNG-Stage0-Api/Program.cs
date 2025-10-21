@@ -12,8 +12,9 @@ namespace HNG_Stage0_Api
 
             // Register SQLite DB
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+              options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
+
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://0.0.0.0:{port}");     
 
@@ -55,6 +56,10 @@ namespace HNG_Stage0_Api
             app.MapControllers();
 
             app.MapGet("/", () => "🚀 API is running on PXXL App successfully!");
+
+            // Log successful startup
+            Console.WriteLine($"✅ Server running on port {port} in {app.Environment.EnvironmentName} mode");
+
 
             app.Run();
         }
