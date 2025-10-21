@@ -23,11 +23,13 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./HNG-Api1-2.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-ENV ConnectionStrings__DefaultConnection="Data Source=/app/app.db"
-ENV ASPNETCORE_ENVIRONMENT="Production"
-
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# Environment variables
+ENV ConnectionStrings__DefaultConnection="Data Source=/app/app.db"
+ENV ASPNETCORE_ENVIRONMENT="Production"
+
 ENTRYPOINT ["dotnet", "HNG-Api1-2.dll"]

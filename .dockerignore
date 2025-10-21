@@ -1,6 +1,10 @@
 
 bin/
 obj/
+.vs/
 .git/
 .gitignore
+*.user
+*.db
+*.sqlite
 *.md
