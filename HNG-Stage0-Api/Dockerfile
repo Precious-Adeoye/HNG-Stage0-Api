@@ -34,6 +34,6 @@ ENV ConnectionStrings__DefaultConnection="Data Source=/app/app.db"
 ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT:-8080}
 EXPOSE 3000
 
- ENTRYPOINT ["dotnet", "out/HNG-Stage0-Api.dll"]
+ ENTRYPOINT ["dotnet", "HNG-Stage0-Api.dll"]
 
 
